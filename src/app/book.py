@@ -66,3 +66,11 @@ class CommandBook():
 
     def __contains__(self, name: str) -> bool:
         return name.strip().lower() in self._by_name
+
+    
+DEFAULT_BOOK: Final[CommandBook] = CommandBook(ALL_COMMANDS)
+
+_COMMANDS_BY_NAME: MappingProxyType[str, Command] = DEFAULT_BOOK._by_name
+_COMMANDS_BY_CATEGORY: MappingProxyType[Category, tuple[Command, ...]] = (
+    DEFAULT_BOOK._by_category
+)
