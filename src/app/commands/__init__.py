@@ -1,7 +1,3 @@
-"""Shell Manager - An interactive Linux terminal assistant for beginners."""
-
-__version__ = "1.0.0"
-__author__ = "Tyrant_Delet"
 
 from app.commands import (
     get_all_commands,
