@@ -36,3 +36,33 @@ class CommandBook():
                 }
             )
         )
+
+    def get_all(self) -> tuple[Command, ...]:
+        return self._commands
+
+    def get_by_name(self, name: str) -> Command | None:
+        return self._by_name.get(name.strip().lower())
+
+    def get_by_category(self, category: Category) -> tuple[Command, ...]:
+        return self._by_category.get(category, ())
+
+    def search(self, query: str) -> tuple[Command, ...]:
+        q = query.strip().lower()
+        if not q:
+            return self._commands
+        return tuple(
+            cmd
+            for cmd in self._commands
+            if q in cmd.name.lower()
+            or q in cmd.summary.lower()
+            or q in cmd.description.lower()
+        )
+
+    def __iter__(self):
+        return iter(self._commands)
+
+    def __len__(self) -> int:
+        return len(self._commands)
+
+    def __contains__(self, name: str) -> bool:
+        return name.strip().lower() in self._by_name
