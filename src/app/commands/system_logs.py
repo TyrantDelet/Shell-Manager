@@ -324,3 +324,24 @@ SYSTEM_LOGS_COMMANDS: Final[tuple[Command, ...]] = (
         notes="Safe and fast way to check if a machine was recently rebooted or is under high load.",
     ),
 )
+
+
+class SystemLogsCommands:
+
+    COMMANDS: Final[tuple[Command, ...]] = SYSTEM_LOGS_COMMANDS
+
+    def __init__(self, commands: Iterable[Command] = SYSTEM_LOGS_COMMANDS) -> None:
+        self._commands = tuple(commands)
+        names = [c.name for c in self._commands]
+        if len(names) != len(set(names)):
+            raise ValueError("Duplicate command names")
+        self._by_name = MappingProxyType({c.name: c for c in self._commands})
+
+    def __iter__(self):
+        return iter(self._commands)
+
+    def __len__(self) -> int:
+        return len(self._commands)
+
+    def __getitem__(self, index: int) -> Command:
+        return self._commands[index]
