@@ -366,3 +366,24 @@ NAVIGATION_COMMANDS: Final[tuple[Command, ...]] = (
     ),
 )
 
+
+class NavigationCommands:
+
+    COMMANDS: Final[tuple[Command, ...]] = NAVIGATION_COMMANDS
+
+    def __init__(self, commands: Iterable[Command] = NAVIGATION_COMMANDS) -> None:
+        self._commands = tuple(commands)
+        names = [c.name for c in self._commands]
+        if len(names) != len(set(names)):
+            raise ValueError("Duplicate command names")
+        self._by_name = MappingProxyType({c.name: c for c in self._commands})
+
+    def __iter__(self):
+        return iter(self._commands)
+
+    def __len__(self) -> int:
+        return len(self._commands)
+
+    def __getitem__(self, index: int) -> Command:
+        return self._commands[index]
+
