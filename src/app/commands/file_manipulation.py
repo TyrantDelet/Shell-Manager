@@ -483,6 +483,8 @@ FILE_MANIPULATION_COMMANDS: Final[tuple[Command, ...]] = (
 
 class FileManipulationCommands():
 
+    COMMANDS: Final[tuple[Command, ...]] = FILE_MANIPULATION_COMMANDS
+
     def __init__(self, commands: Iterable[Command] = FILE_MANIPULATION_COMMANDS) -> None:
         self._commands = tuple(commands)
         names = [c.name for c in self._commands]
