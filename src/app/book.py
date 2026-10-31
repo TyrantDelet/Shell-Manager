@@ -74,3 +74,18 @@ _COMMANDS_BY_NAME: MappingProxyType[str, Command] = DEFAULT_BOOK._by_name
 _COMMANDS_BY_CATEGORY: MappingProxyType[Category, tuple[Command, ...]] = (
     DEFAULT_BOOK._by_category
 )
+
+def get_all_commands() -> tuple[Command, ...]:
+    return DEFAULT_BOOK.get_all()
+
+
+def get_commands_by_category(category: Category) -> tuple[Command, ...]:
+    return _COMMANDS_BY_CATEGORY.get(category, ())
+
+
+def get_command_by_name(name: str) -> Command | None:
+    return _COMMANDS_BY_NAME.get(name.strip().lower())
+
+
+def search_commands(query: str) -> tuple[Command, ...]:
+    return DEFAULT_BOOK.search(query)
