@@ -480,3 +480,12 @@ FILE_MANIPULATION_COMMANDS: Final[tuple[Command, ...]] = (
         notes="Remember the mnemonic: -czvf to Create, -xzvf to eXtract.",
     ),
 )
+
+class FileManipulationCommands():
+
+    def __init__(self, commands: Iterable[Command] = FILE_MANIPULATION_COMMANDS) -> None:
+        self._commands = tuple(commands)
+        names = [c.name for c in self._commands]
+        if len(names) != len(set(names)):
+            raise ValueError("Duplicate command names found in FileManipulationCommands.")
+        self._by_name = MappingProxyType({c.name: c for c in self._commands})
