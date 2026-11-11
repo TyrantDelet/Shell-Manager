@@ -14,7 +14,7 @@ class CommandBookTest(unittest.TestCase):
     def test_book_coverage(self):
         commands = get_all_commands()
         self.assertGreaterEqual(
-            len(comamnds),
+            len(commands),
             20
             f"Expected at least 20 commands, got {len(commands)}",
         )
@@ -64,3 +64,42 @@ class CommandBookTest(unittest.TestCase):
                     self.assertTrue(
                         ex.description, f"Example description missing in {cmd.name}"
                     )
+
+    
+    def test_safety_guardrails_metadata(self):
+        rm_cmd = get_command_by_name("rm")
+        self.assertIsNotNone(rm_cmd)
+        self.assertTrue(rm_cmd.is_destructive)
+        self.assertTrue(rm_cmd.requires_confirmation)
+
+        chmod_cmd = get_command_by_name("chmod")
+        self.assertIsNotNone(chmod_cmd)
+        self.assertTrue(chmod_cmd.requires_sudo)
+        self.assertTrue(chmod_cmd.requires_confirmation)
+
+        chown_cmd = get_command_by_name("chown")
+        self.assertIsNotNone(chown_cmd)
+        self.assertTrue(chown_cmd.requires_sudo)
+        self.assertTrue(chown_cmd.requires_confirmation)
+
+        pwd_cmd = get_command_by_name("pwd")
+        self.assertIsNotNone(pwd_cmd)
+        self.assertFalse(pwd_cmd.requires_confirmation)
+
+        ls_cmd = get_command_by_name("ls")
+        self.assertIsNotNone(ls_cmd)
+        self.assertFalse(ls_cmd.requires_confirmation)
+
+    def test_lookup_and_search(self):
+        self.assertIsNotNone(get_command_by_name("ls"))
+        self.assertIsNotNone(get_command_by_name("LS"))
+        self.assertIsNone(get_command_by_name("nonexistent_command_xyz"))
+
+        results = search_commands("directory")
+        self.assertGreater(len(results), 0)
+        found_names = [c.name for c in results]
+        self.assertIn("ls", found_names)
+
+
+if __name__ == "__main__":
+    unittest.main()
