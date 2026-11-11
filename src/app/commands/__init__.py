@@ -1,25 +1,9 @@
-
-from app.commands import (
-    get_all_commands,
-    get_command_by_name,
-    get_commands_by_category,
-    search_commands,
-)
-
-from app.config import CONFIG, AppConfig
-from app.models import Category, Command, CommandExample, Flag, SafetyLevel
+from app.commands.file_manipulation import FILE_MANIPULATION_COMMANDS
+from app.commands.navigation import NAVIGATION_COMMANDS
+from app.commands.system_logs import SYSTEM_LOGS_COMMANDS
 
 __all__ = [
-    "AppConfig",
-    "CONFIG",
-    "Category",
-    "Command",
-    "CommandExample",
-    "Flag",
-    "SafetyLevel",
-    "__version__",
-    "get_all_commands",
-    "get_command_by_name",
-    "get_commands_by_category",
-    "search_commands",
+    "NAVIGATION_COMMANDS",
+    "FILE_MANIPULATION_COMMANDS",
+    "SYSTEM_LOGS_COMMANDS", 
 ]
