@@ -43,15 +43,6 @@ _SAFETY_LABELS: dict[SafetyLevel, str] = {
     SafetyLevel.SUDO_REQUIRED: "Elevated / Sudo Required",
 }
 
-# Probably will be moved to /ui.
-
-_SAFETY_BADGES: dict[SafetyLevel, str] = {
-    SafetyLevel.READ_ONLY: "[green]● READ-ONLY[/green]",
-    SafetyLevel.MODIFICATION: "[yellow]▲ MODIFICATION[/yellow]",
-    SafetyLevel.DESTRUCTIVE: "[red]■ DESTRUCTIVE[/red]",
-    SafetyLevel.SUDO_REQUIRED: "[magenta]⚡ SUDO REQUIRED[/blue]",
-}
- 
 _CATEGORY_NAMES: dict[Category, str] = {
     Category.NAVIGATION: "Navigation & Directory Browsing",
     Category.FILE_MANIPULATION: "File & Directory Manipulation",
