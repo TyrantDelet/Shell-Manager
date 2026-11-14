@@ -295,3 +295,9 @@ class FormattingHelpers():
             return f"[prompt]{message}[/prompt] [prompt.bracket]([prompt.default]{default}[/prompt.default]):[/prompt.bracket] "
         return f"[prompt]{message}:[/prompt] "
 
+
+if __name__ == "__main__":
+    from rich.panel import Panel
+    from rich.table import Table
+
+    
