@@ -160,6 +160,25 @@ SAFETY_STYLES: Final[MappingProxyType[SafetyLevel, str]] = MappingProxyType(
     }
 )
 
+
+SAFETY_BADGES: Final[MappingProxyType[SafetyLevel, str]] = MappingProxyType(
+    {
+        SafetyLevel.READ_ONLY: f"[green]{Symbols.READ_ONLY} READ-ONLY[/green]",
+        SafetyLevel.MODIFICATION: f"[yellow]{Symbols.MODIFICATION} MODIFICATION[/yellow]",
+        SafetyLevel.DESTRUCTIVE: f"[red]{Symbols.DESTRUCTIVE} DESTRUCTIVE[/red]",
+        SafetyLevel.SUDO_REQUIRED: f"[magenta]{Symbols.SUDO} SUDO REQUIRED[/magenta]",
+    }
+)
+
+SAFETY_BADGE_STYLES: Final[MappingProxyType[SafetyLevel, str]] = MappingProxyType(
+    {
+        SafetyLevel.READ_ONLY: "badge.read_only",
+        SafetyLevel.MODIFICATION: "badge.modification",
+        SafetyLevel.DESTRUCTIVE: "badge.destructive",
+        SafetyLevel.SUDO_REQUIRED: "badge.sudo_required",
+    }
+)
+
 SAFETY_ICONS: Final[MappingProxyType[SafetyLevel, str]] = MappingProxyType(
     {
         SafetyLevel.READ_ONLY: Symbols.READ_ONLY,
