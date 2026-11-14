@@ -150,3 +150,30 @@ THEME_STYLES: Final[dict[str, str]] = {
 }
 
 THEME: Final[Theme] = Theme(THEME_STYLES)
+
+SAFETY_STYLES: Final[MappingProxyType[SafetyLevel, str]] = MappingProxyType(
+    {
+        SafetyLevel.READ_ONLY: "safety.read_only",
+        SafetyLevel.MODIFICATION: "safety.modification",
+        SafetyLevel.DESTRUCTIVE: "safety.destructive",
+        SafetyLevel.SUDO_REQUIRED: "safety.sudo_required",
+    }
+)
+
+SAFETY_ICONS: Final[MappingProxyType[SafetyLevel, str]] = MappingProxyType(
+    {
+        SafetyLevel.READ_ONLY: Symbols.READ_ONLY,
+        SafetyLevel.MODIFICATION: Symbols.MODIFICATION,
+        SafetyLevel.DESTRUCTIVE: Symbols.DESTRUCTIVE,
+        SafetyLevel.SUDO_REQUIRED: Symbols.SUDO,
+    }
+)
+
+SAFETY_BORDER_STYLES: Final[MappingProxyType[SafetyLevel, str]] = MappingProxyType(
+    {
+        SafetyLevel.READ_ONLY: "green",
+        SafetyLevel.MODIFICATION: "yellow",
+        SafetyLevel.DESTRUCTIVE: "red",
+        SafetyLevel.SUDO_REQUIRED: "magenta",
+    }
+)
