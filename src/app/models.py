@@ -3,7 +3,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from enum import StrEnum
 
-
 class SafetyLevel(StrEnum):
 
     READ_ONLY = "read_only"
@@ -15,10 +14,6 @@ class SafetyLevel(StrEnum):
     @property
     def label(self) -> str:
         return _SAFETY_LABELS[self]
-
-    @property
-    def badge(self) -> str:
-        return _SAFETY_BADGES[self]
 
 
 class Category(StrEnum):
