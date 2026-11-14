@@ -160,7 +160,6 @@ SAFETY_STYLES: Final[MappingProxyType[SafetyLevel, str]] = MappingProxyType(
     }
 )
 
-
 SAFETY_BADGES: Final[MappingProxyType[SafetyLevel, str]] = MappingProxyType(
     {
         SafetyLevel.READ_ONLY: f"[green]{Symbols.READ_ONLY} READ-ONLY[/green]",
@@ -194,5 +193,29 @@ SAFETY_BORDER_STYLES: Final[MappingProxyType[SafetyLevel, str]] = MappingProxyTy
         SafetyLevel.MODIFICATION: "yellow",
         SafetyLevel.DESTRUCTIVE: "red",
         SafetyLevel.SUDO_REQUIRED: "magenta",
+    }
+)
+
+CATEGORY_ICONS: Final[MappingProxyType[Category, str]] = MappingProxyType(
+    {
+        Category.NAVIGATION: Symbols.NAVIGATION,
+        Category.FILE_MANIPULATION: Symbols.FILE,
+        Category.SYSTEM_LOGS: Symbols.LOGS,
+    }
+)
+
+CATEGORY_STYLES: Final[MappingProxyType[Category, str]] = MappingProxyType(
+    {
+        Category.NAVIGATION: "category.navigation",
+        Category.FILE_MANIPULATION: "category.file_manipulation",
+        Category.SYSTEM_LOGS: "category.system_logs",
+    }
+)
+
+CATEGORY_BORDER_STYLES: Final[MappingProxyType[Category, str]] = MappingProxyType(
+    {
+        Category.NAVIGATION: "bright_cyan",
+        Category.FILE_MANIPULATION: "bright_yellow",
+        Category.SYSTEM_LOGS: "bright_blue",
     }
 )
