@@ -239,5 +239,59 @@ def reset_console() -> Console:
     _CONSOLE = Console(theme=THEME)
     return _CONSOLE
 
-
 console: Console = get_console()
+
+
+class FormattingHelpers():
+        
+    def format_key(key: str, label: str = "") -> str:
+        escaped_bracketed = escape(f"[{key}]")
+        styled_key = f"[menu.key]{escaped_bracketed}[/menu.key]"
+        if label:
+            return f"{styled_key} {label}"
+        return styled_key
+
+
+    def format_safety_badge(safety_level: SafetyLevel, pill: bool = False) -> str:
+        icon = SAFETY_ICONS.get(safety_level, Symbols.INFO)
+        label = safety_level.name.replace("_", " ").upper()
+
+        if pill:
+            style = SAFETY_BADGE_STYLES.get(safety_level, "bold white on blue")
+            return f"[{style}] {icon} {label} [/{style}]"
+
+        style = SAFETY_STYLES.get(safety_level, "white")
+        return f"[{style}]{icon} {label}[/{style}]"
+
+
+    def format_category_badge(category: Category, include_icon: bool = True) -> str:
+        icon = CATEGORY_ICONS.get(category, "")
+        style = CATEGORY_STYLES.get(category, "white")
+        display_name = category.display_name
+        if include_icon and icon:
+            return f"[{style}]{icon} {display_name}[/{style}]"
+        return f"[{style}]{display_name}[/{style}]"
+
+
+    def format_warning_banner(message: str) -> str:
+        return f"[warning]{Symbols.WARNING} {message}[/warning]"
+
+
+    def format_danger_banner(message: str) -> str:
+        return f"[danger]{Symbols.DESTRUCTIVE} {message}[/danger]"
+
+
+    def format_sudo_banner(message: str) -> str:
+        return f"[safety.sudo_required]{Symbols.SUDO} {message}[/safety.sudo_required]"
+
+
+    def format_nav_bar(actions: Iterable[tuple[str, str]], separator: str = "  [dim]|[/dim]  ") -> str:
+        rendered_actions = [FormattingHelpers.format_key(key, label) for key, label in actions]
+        return separator.join(rendered_actions)
+
+
+    def format_prompt(message: str = "Select an option", default: str = "") -> str:
+        if default:
+            return f"[prompt]{message}[/prompt] [prompt.bracket]([prompt.default]{default}[/prompt.default]):[/prompt.bracket] "
+        return f"[prompt]{message}:[/prompt] "
+
