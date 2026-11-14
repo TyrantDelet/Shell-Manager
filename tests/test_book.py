@@ -15,7 +15,7 @@ class CommandBookTest(unittest.TestCase):
         commands = get_all_commands()
         self.assertGreaterEqual(
             len(commands),
-            20
+            20,
             f"Expected at least 20 commands, got {len(commands)}",
         )
 
