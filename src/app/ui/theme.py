@@ -11,7 +11,7 @@ from rich.theme import Theme
 from app.models import Category, SafetyLevel
 
 
-# Color Pallete 
+# Color Pallete and Box Borders 
 
 PRIMARY: Final[str] = "cyan"
 PRIMARY_BOLD: Final[str] = "bold cyan"
@@ -25,6 +25,13 @@ MUTED: Final[str] = "dim"
 TEXT: Final[str] = "white"
 TEXT_MUTED: Final[str] = "dim white"
 HIGHLIGHT: Final[str] = "bright_yellow"
+
+BOX_ROUNDED: Final[Box] = ROUNDED
+BOX_HEAVY: Final[Box] = HEAVY
+BOX_DOUBLE: Final[Box] = DOUBLE
+BOX_MINIMAL: Final[Box] = MINIMAL
+BOX_SIMPLE: Final[Box] = SIMPLE
+BOX_DEFAULT: Final[Box] = ROUNDED
 
 class Symbols:
 
