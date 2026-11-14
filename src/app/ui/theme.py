@@ -10,6 +10,22 @@ from rich.theme import Theme
 
 from app.models import Category, SafetyLevel
 
+
+# Color Pallete 
+
+PRIMARY: Final[str] = "cyan"
+PRIMARY_BOLD: Final[str] = "bold cyan"
+SECONDARY: Final[str] = "blue"
+ACCENT: Final[str] = "magenta"
+SUCCESS: Final[str] = "green"
+WARNING: Final[str] = "yellow"
+DANGER: Final[str] = "red"
+ELEVATED: Final[str] = "magenta"
+MUTED: Final[str] = "dim"
+TEXT: Final[str] = "white"
+TEXT_MUTED: Final[str] = "dim white"
+HIGHLIGHT: Final[str] = "bright_yellow"
+
 class Symbols:
 
     READ_ONLY: Final[str] = "●"
