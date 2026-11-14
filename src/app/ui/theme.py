@@ -219,3 +219,25 @@ CATEGORY_BORDER_STYLES: Final[MappingProxyType[Category, str]] = MappingProxyTyp
         Category.SYSTEM_LOGS: "bright_blue",
     }
 )
+
+CONSOLE: Console | None = None
+
+def set_console(new_console: Console) -> None:
+    global _CONSOLE
+    _CONSOLE = new_console
+
+
+def get_console() -> Console:
+    global _CONSOLE
+    if _CONSOLE is None:
+        _CONSOLE = Console(theme=THEME)
+    return _CONSOLE
+
+
+def reset_console() -> Console:
+    global _CONSOLE
+    _CONSOLE = Console(theme=THEME)
+    return _CONSOLE
+
+
+console: Console = get_console()
