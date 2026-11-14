@@ -300,4 +300,74 @@ if __name__ == "__main__":
     from rich.panel import Panel
     from rich.table import Table
 
+    demo_console = get_console()
+
+    demo_console.print()
+    demo_console.print(
+        Panel(
+            "[app.title]Shell Manager[/app.title] - [app.subtitle]Interactive Linux Terminal Guide[/app.subtitle]\n"
+            "[app.version]v1.0.0[/app.version] [app.author](by Tyrant_Delet)[/app.author]",
+            border_style="app.border",
+            box=BOX_ROUNDED,
+            title="[bold cyan]Theme Preview[/bold cyan]",
+        )
+    )
+
+    badge_table = Table(
+        title="Visual Safety Badges (Implementation Plan Compliance)",
+        box=BOX_ROUNDED,
+        border_style="panel.border",
+        header_style="table.header",
+    )
+    badge_table.add_column("Safety Level", style="bold white")
+    badge_table.add_column("Standard Badge")
+    badge_table.add_column("Pill Badge")
+    badge_table.add_column("Behavior & Guardrails", style="dim")
+
+    descriptions = {
+        SafetyLevel.READ_ONLY: "Safe to run without system risk",
+        SafetyLevel.MODIFICATION: "Alters user files",
+        SafetyLevel.DESTRUCTIVE: "Can delete data - requires explicit [y/N] confirmation",
+        SafetyLevel.SUDO_REQUIRED: "Elevated / Sudo required - requires explicit [y/N] confirmation",
+    }
+
+    for level in SafetyLevel:
+        badge_table.add_row(
+            level.name,
+            FormattingHelpers.format_safety_badge(level, pill=False),
+            FormattingHelpers.format_safety_badge(level, pill=True),
+            descriptions.get(level, ""),
+        )
+    demo_console.print(badge_table)
+
+    cat_table = Table(
+        title="Core Categories",
+        box=BOX_ROUNDED,
+        border_style="panel.border",
+        header_style="table.header",
+    )
+    cat_table.add_column("Category", style="bold white")
+    cat_table.add_column("Badge")
+    cat_table.add_column("Description", style="dim")
+
+    for cat in Category:
+        cat_table.add_row(
+            cat.name,
+            FormattingHelpers.format_category_badge(cat),
+            cat.description,
+        )
+    demo_console.print(cat_table)
+
+    demo_console.print("\n[bold]Status & Alert Banners:[/bold]")
+    demo_console.print(FormattingHelpers.format_warning_banner("Modification warning: alters files."))
+    demo_console.print(FormattingHelpers.format_danger_banner("Destructive action: permanent data loss risk."))
+    demo_console.print(FormattingHelpers.format_sudo_banner("Privileged operation: requires elevated sudo credentials."))
+
+    demo_console.print("\n[bold]Navigation Bar & Prompts:[/bold]")
+    demo_console.print(
+        FormattingHelpers.format_nav_bar([("1..5", "Select"), ("s", "Search"), ("b", "Back"), ("q", "Quit")])
+    )
+    demo_console.print(FormattingHelpers.format_prompt("Select an option", default="1"))
+    demo_console.print()
+
     
