@@ -220,7 +220,7 @@ CATEGORY_BORDER_STYLES: Final[MappingProxyType[Category, str]] = MappingProxyTyp
     }
 )
 
-CONSOLE: Console | None = None
+_CONSOLE: Console | None = None
 
 def set_console(new_console: Console) -> None:
     global _CONSOLE
