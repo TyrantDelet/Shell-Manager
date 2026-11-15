@@ -52,15 +52,15 @@ class Parent(ABC):
 
     @abstractmethod
     def get_project_root(self) -> Path:
-        """Return the project root path."""
+        ...
 
     @abstractmethod
     def get_timeout_seconds(self) -> int:
-        """Return the configured timeout value in seconds."""
+        ...
 
     @abstractmethod
     def should_confirm_destructive(self) -> bool:
-        """Return whether destructive actions should require confirmation."""
+        ...
 
 @dataclass(frozen=True)
 class AppConfig(Parent):
@@ -106,5 +106,4 @@ def get_config() -> AppConfig:
 
 
 CONFIG: AppConfig = get_config()
-
 
