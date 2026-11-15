@@ -1,3 +1,3 @@
 # Shell Manager
 
-A Python program that simplifies Linux terminal use with an interactive menu of explained commands, helping users avoid system errors caused by mistyped or misunderstood commands.
+A CLI tool that help users to understand Linux Terminal commands and to manipulate commands without typing everytime. 
