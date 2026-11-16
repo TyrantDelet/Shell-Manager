@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from pathlib import Path
 from types import MappingProxyType
 from typing import Final, Iterable
 
@@ -240,7 +241,11 @@ def reset_console() -> Console:
     return _CONSOLE
 
 console: Console = get_console()
+ 
+asset = Path("src/app/ui/assets/shellmanagertextart.txt")
 
+def get_content():
+    return asset.read_text(encoding="utf-8")
 
 class FormattingHelpers():
         
@@ -303,6 +308,11 @@ if __name__ == "__main__":
     demo_console = get_console()
 
     demo_console.print()
+
+    demo_console.print(
+        get_content(), style="bold green", highlight=False
+    )
+
     demo_console.print(
         Panel(
             "[app.title]Shell Manager[/app.title] - [app.subtitle]Interactive Linux Terminal Guide[/app.subtitle]\n"
