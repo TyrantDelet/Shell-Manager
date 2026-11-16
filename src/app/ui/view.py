@@ -274,3 +274,25 @@ def prompt_view_action(console: Console | None = None) -> ViewAction:
         except (KeyboardInterrupt, EOFError):
             c.print("\n[dim]Returning to previous menu...[/dim]")
             return ViewAction.BACK
+
+
+
+if __name__ == "__main__":
+    from app.book import get_command_by_name
+
+    demo_console = get_console()
+
+    ls_cmd = get_command_by_name("ls")
+    if ls_cmd:
+        demo_console.print("\n[bold]=== Exploded View: Read-Only (ls) ===[/bold]")
+        render_exploded_view(ls_cmd, console=demo_console)
+
+    rm_cmd = get_command_by_name("rm")
+    if rm_cmd:
+        demo_console.print("\n[bold]=== Exploded View: Destructive (rm) ===[/bold]")
+        render_exploded_view(rm_cmd, console=demo_console)
+
+    demo_console.print("\n[bold]=== Command Preview & Clipboard Demo ===[/bold]")
+    render_command_preview("rm -r /tmp/test_dir", SafetyLevel.DESTRUCTIVE, console=demo_console)
+    render_clipboard_box("ls -lah /var/log", was_copied=True, console=demo_console)
+    render_clipboard_box("nano /etc/fstab", was_copied=False, console=demo_console)
