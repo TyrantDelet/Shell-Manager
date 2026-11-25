@@ -242,7 +242,7 @@ def reset_console() -> Console:
 
 console: Console = get_console()
  
-asset = Path("src/app/ui/assets/shellmanagertextart.txt")
+asset = Path(__file__).resolve().parent / "assets/shellmanagertextart.txt"
 
 def get_content():
     return asset.read_text(encoding="utf-8")
