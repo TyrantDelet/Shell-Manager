@@ -9,5 +9,4 @@ __all__ = [
     "CommandExample",
     "Flag",
     "SafetyLevel",
-    "__version__",
 ]
