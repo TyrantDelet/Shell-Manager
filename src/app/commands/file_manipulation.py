@@ -16,7 +16,7 @@ FILE_MANIPULATION_COMMANDS: Final[tuple[Command, ...]] = (
             "If the specified file does not exist, it will be created. If it does exist, its timestamps will be updated to the current time."
         ),
         syntax="touch [options] <file_name>",
-        default_args=("new_file.txt",),
+        default_args="new_file.txt",
         flags=(
             Flag(
                 flag="-c",
